@@ -29,11 +29,30 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .highlight {
-    color: #3498db;
+    color: #2980b9;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
+}
+
+.highlight::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: linear-gradient(45deg, #3498db, #2980b9);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    opacity: 0.1;
+    border-radius: 4px;
+    z-index: -1;
+}
+
+/* Alternative simple approach - just use a solid color with bold text */
+.highlight {
+    color: #2980b9;
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(52, 152, 219, 0.3);
 }
 
 /* Buttons */
@@ -441,21 +460,59 @@ h1, h2, h3, h4, h5, h6 {
     color: #2c3e50;
 }
 
-.cert-placeholder {
+.cert-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.cert-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
     background: #f8f9fa;
-    padding: 30px;
+    padding: 25px;
     border-radius: 10px;
     border-left: 4px solid #3498db;
+    transition: transform 0.3s ease;
 }
 
-.cert-placeholder p {
+.cert-item:hover {
+    transform: translateY(-2px);
+    background: #e9ecef;
+}
+
+.cert-icon {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.cert-details h4 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.cert-code {
+    font-size: 0.9rem;
+    color: #3498db;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.cert-description {
     color: #5d6d7e;
-    margin-bottom: 15px;
-}
-
-.cert-placeholder ul {
-    color: #7f8c8d;
-    margin-left: 20px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
 }
 
 /* Contact Section */
