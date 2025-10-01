@@ -39,6 +39,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Contact methods are now direct links - no form handling needed
 
+    // Set current year in footer
+    const currentYearElement = document.getElementById('current-year');
+    if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
+    }
+
     // Add navbar background on scroll
     window.addEventListener('scroll', function() {
         const navbar = document.querySelector('.navbar');
