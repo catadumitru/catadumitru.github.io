@@ -45,6 +45,30 @@ document.addEventListener('DOMContentLoaded', function() {
         currentYearElement.textContent = new Date().getFullYear();
     }
 
+    // Professional email protection - displays normally but prevents scraping
+    const emailDisplay = document.getElementById('email-display');
+    if (emailDisplay) {
+        // Base64 encoded email parts for better obfuscation
+        const encodedEmail = 'ZHVtaXRydS5jYXRhbGluOTFAb3V0bG9vay5jb20=';
+        
+        // Decode and display email immediately (looks professional)
+        function initEmail() {
+            const email = atob(encodedEmail);
+            
+            // Create clickable email link
+            const emailLink = document.createElement('a');
+            emailLink.href = 'mailto:' + email;
+            emailLink.textContent = email;
+            emailLink.className = 'contact-link';
+            
+            // Replace the span with the link
+            emailDisplay.parentNode.replaceChild(emailLink, emailDisplay);
+        }
+        
+        // Initialize email display after a tiny delay to avoid immediate bot scraping
+        setTimeout(initEmail, 100);
+    }
+
     // Add navbar background on scroll
     window.addEventListener('scroll', function() {
         const navbar = document.querySelector('.navbar');
